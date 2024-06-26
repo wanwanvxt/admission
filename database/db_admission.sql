@@ -125,6 +125,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin123', 'admin', 'admin'),
+(2, 'truong', '1234', 'mod');
+
+--
 -- Constraints for dumped tables
 --
 
