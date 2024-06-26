@@ -1,5 +1,6 @@
 package admission.view;
 
+import admission.controller.MajorController;
 import admission.model.User;
 import admission.util.DialogMessage;
 import admission.view.management.ApprovalMgmtPanel;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 public class ManagementFrame extends javax.swing.JFrame {
 
   private User currentUser;
+  private MajorController majorCtrl;
 
   private void loadPanel(JPanel panel) {
     showPanel.removeAll();
@@ -25,6 +27,7 @@ public class ManagementFrame extends javax.swing.JFrame {
   public ManagementFrame(User currentUser) {
     initComponents();
     this.currentUser = currentUser;
+    majorCtrl = new MajorController();
     loadPanel(new WelcomePanel(currentUser));
   }
 
@@ -173,11 +176,21 @@ public class ManagementFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_majorMgmtButtonActionPerformed
 
   private void candMgmtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_candMgmtButtonActionPerformed
-    loadPanel(new CandMgmtPanel());
+    int majorCount = majorCtrl.getMajorCount();
+    if (majorCount > 0) {
+      loadPanel(new CandMgmtPanel());
+    } else {
+      DialogMessage.showWarning(this, "You must add majors before accessing this feature!");
+    }
   }//GEN-LAST:event_candMgmtButtonActionPerformed
 
   private void approvalMgmtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approvalMgmtButtonActionPerformed
-    loadPanel(new ApprovalMgmtPanel());
+    int majorCount = majorCtrl.getMajorCount();
+    if (majorCount > 0) {
+      loadPanel(new ApprovalMgmtPanel());
+    } else {
+      DialogMessage.showWarning(this, "You must add majors before accessing this feature!");
+    }
   }//GEN-LAST:event_approvalMgmtButtonActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
