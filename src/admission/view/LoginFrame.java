@@ -111,10 +111,8 @@ public class LoginFrame extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-//    String username = usernameField.getText();
-//    String password = new String(passwordField.getPassword());
-    String username = "admin123";
-    String password = "admin";
+    String username = usernameField.getText();
+    String password = new String(passwordField.getPassword());
 
     if (username.isBlank() || password.isBlank()) {
       DialogMessage.showWarning(this, "All fields are required!");
