@@ -16,6 +16,10 @@ public class MajorController {
     return majorDAO.getAllMajors();
   }
 
+  public int getMajorCount() {
+    return majorDAO.getMajorCount();
+  }
+
   public boolean addMajor(Major major) {
     return majorDAO.addMajor(major);
   }

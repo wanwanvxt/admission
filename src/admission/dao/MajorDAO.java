@@ -31,6 +31,21 @@ public class MajorDAO {
     return majors;
   }
 
+  public int getMajorCount() {
+    int count = 0;
+    String sql = "SELECT COUNT(*) AS count FROM majors";
+
+    try (Connection conn = DBConnection.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+      if (rs.next()) {
+        count = rs.getInt("count");
+      }
+    } catch (SQLException e) {
+      LogException.log(this.getClass().getName(), e);
+    }
+
+    return count;
+  }
+
   public boolean addMajor(Major major) {
     String sql = "INSERT INTO majors (name, description, falculty_id, quota) VALUES (?,?,?,?)";
 
