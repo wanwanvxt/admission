@@ -55,7 +55,6 @@ public class UserDAO {
 
   public boolean addUser(User user) {
     String sql = "INSERT INTO users (username, password, role) VALUES (?,?,?)";
-    System.out.println(user);
 
     try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, user.getUsername());
